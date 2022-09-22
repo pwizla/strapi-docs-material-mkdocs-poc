@@ -30,6 +30,14 @@ theme:
       toggle:
         icon: material/brightness-5
         name: Switch to light mode
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-authors
+  - git-committers:
+      repository: pwizla/strapi-docs-material-mkdocs-poc
+      token: !ENV GH_TOKEN
+      branch: main
 extra:
   consent:
     title: Cookie consent
