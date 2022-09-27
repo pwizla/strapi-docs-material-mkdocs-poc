@@ -6,10 +6,6 @@ sidebar_position: 1
 
 # Welcome to the Strapi Developer Docs!
 
-!!! caution "Canary build 🐥"
-
-    You're reading the bleeding edge version of our documentation. Some features might still be buggy.
-
 This documentation contains all technical documentation related to the setup, deployment, update and customization of your Strapi application.
 
 !!! strapi "Can't wait to start using Strapi?"
