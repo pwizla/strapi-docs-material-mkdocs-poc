@@ -20,7 +20,13 @@ A new controller can be implemented:
 
 === "JavaScript"
 
-    ```js title="./src/api/restaurant/controllers/restaurant.js" linenums="1"
+    !!! abstract "A nice Material for MkDocs feature is hidden in this block 🤫"
+        This tabs showcases the annotation feature of Material for MkDocs. Click on the following little icon (1) to test it.
+        { .annotate }
+
+        1.  Hello, I'm an [annotation](https://squidfunk.github.io/mkdocs-material/reference/annotations/)! I could be used to display more information 🤓
+
+    ```js title="./src/api/restaurant/controllers/restaurant.js" linenums="1" hl_lines="33"
 
     const { createCoreController } = require('@strapi/strapi').factories;
 

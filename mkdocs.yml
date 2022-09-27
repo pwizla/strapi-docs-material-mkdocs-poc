@@ -48,6 +48,8 @@ markdown_extensions:
       anchor_linenums: true # make it possible to link to a specific line of code
       use_pygments: true # renders colors on server side, not on client side
   - pymdownx.inlinehilite
+  - attr_list # used for annotations — see https://squidfunk.github.io/mkdocs-material/reference/annotations/#annotations
+  - md_in_html # same, required for annotations
   - toc:
       permalink: true
       # toc_depth: 4 # uncomment and define a number from 1 to 6 — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth
