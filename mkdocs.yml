@@ -42,6 +42,12 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true # mandatory for tabs to work — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed
+  - pymdownx.highlight:
+      anchor_linenums: true # make it possible to link to a specific line of code
+      use_pygments: true # renders colors on server side, not on client side
+  - pymdownx.inlinehilite
 extra:
   consent:
     title: Cookie consent
