@@ -38,6 +38,10 @@ plugins:
       repository: pwizla/strapi-docs-material-mkdocs-poc
       token: !ENV GH_TOKEN
       branch: main
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 extra:
   consent:
     title: Cookie consent
