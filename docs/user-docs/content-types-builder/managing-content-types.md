@@ -1,5 +1,5 @@
 ---
-status: new
+status: new # displays a nice icon/tooltip in the TOC - see mkdocs.yml, extra > status > new for setup
 ---
 
 # Managing content-types
