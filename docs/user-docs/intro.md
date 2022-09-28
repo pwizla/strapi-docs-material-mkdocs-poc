@@ -84,6 +84,6 @@ To change the password of your account:
 
 Congratulations on being a new Strapi user! You're now ready to discover all the features and options that Strapi has to offer!
 
-!!!bug "Welcome to the Strapi community!"
+!!! strapi "Welcome to the Strapi community!"
 
     If you have any trouble with your Strapi experience, you can reach us through [GitHub](https://github.com/strapi/) or our [forum](https://forum.strapi.io/)! The Strapi Community and Strapi team are always available to answer your questions or help you with anything!
