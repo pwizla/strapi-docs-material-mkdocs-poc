@@ -68,6 +68,8 @@ markdown_extensions:
   - toc:
       permalink: true
       # toc_depth: 4 # uncomment and define a number from 1 to 6 — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth
+extra_css:
+  - stylesheets/extra.css
 extra:
   consent:
     title: Cookie consent
