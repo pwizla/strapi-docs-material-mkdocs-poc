@@ -14,6 +14,7 @@ theme:
     - navigation.top
     - header.autohide
     - toc.follow
+    - content.tabs.link # link all tabs with the same label throughout whole docs (test it with JS/TS tabs)
   palette:
    # Palette toggle for light mode
     - scheme: default
