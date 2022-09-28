@@ -221,10 +221,13 @@ export default {
 
 ### Settings API
 
-The Settings API allows:
+The Settings API offers 3 different methods:
 
-* [creating a new setting section](#createsettingsection)
-* adding [a single link](#addsettingslink) or [multiple links at once](#addsettingslinks) to existing settings sections
+<div class="grid cards" markdown>
+- [__`createSettingSection()`__](#createsettingsection)<br/>to create a new section
+- [__`addSettingsLink()`__](#addsettingslink)<br/>to add a __single__ link to an existing section
+- [__`addSettingsLinks()`__](#addsettingslink)<br/>to add __multiple__ links to an existing section
+</div>
 
 !!! note
     Adding a new section happens in the [register](#register) lifecycle while adding links happens during the [bootstrap](#bootstrap) lifecycle.
