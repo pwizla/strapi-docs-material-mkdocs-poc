@@ -38,6 +38,14 @@ plugins:
   - git-committers: # using ojacques version of the plugin - https://github.com/ojacques/mkdocs-git-committers-plugin-2
       repository: pwizla/strapi-docs-material-mkdocs-poc
       branch: main
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: "100%"
+      height: auto
+      zoomable: true
+      draggable: true
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -48,8 +56,8 @@ markdown_extensions:
       anchor_linenums: true # make it possible to link to a specific line of code
       use_pygments: true # renders colors on server side, not on client side
   - pymdownx.inlinehilite
-  - attr_list # used for annotations — see https://squidfunk.github.io/mkdocs-material/reference/annotations/#annotations
-  - md_in_html # same, required for annotations
+  - attr_list # used for annotations and images — see https://squidfunk.github.io/mkdocs-material/reference/annotations/#annotations
+  - md_in_html # same, required for annotations and images
   - toc:
       permalink: true
       # toc_depth: 4 # uncomment and define a number from 1 to 6 — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth
