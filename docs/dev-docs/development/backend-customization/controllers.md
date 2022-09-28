@@ -124,9 +124,9 @@ Every action receives a context object (`ctx`) as a parameter. `ctx` contains th
         module.exports = {
             routes: [
                 {
-                method: 'GET',
-                path: '/hello',
-                handler: 'hello.index',
+                    method: 'GET',
+                    path: '/hello',
+                    handler: 'hello.index',
                 }
             ]
         }
@@ -148,9 +148,9 @@ Every action receives a context object (`ctx`) as a parameter. `ctx` contains th
         export default {
             routes: [
                 {
-                method: 'GET',
-                path: '/hello',
-                handler: 'hello.index',
+                    method: 'GET',
+                    path: '/hello',
+                    handler: 'hello.index',
                 }
             ]
         }
