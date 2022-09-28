@@ -20,11 +20,11 @@ A new controller can be implemented:
 
 === "JavaScript"
 
-    !!! abstract "A nice Material for MkDocs feature is hidden in this block 🤫"
+    ???+ abstract "A nice Material for MkDocs feature is hidden in this block 🤫"
         This tabs showcases the annotation feature of Material for MkDocs. Click on the following little icon (1) to test it.
         { .annotate }
 
-        1.  Hello, I'm an [annotation](https://squidfunk.github.io/mkdocs-material/reference/annotations/)! I could be used to display more information 🤓
+        1.  Hello, I'm an [annotation](https://squidfunk.github.io/mkdocs-material/reference/annotations/)!<br/>I could be used to display more information 🤓<br/>Now, try to find another annotation in the TypeScript tab… 👀
 
     ```js title="./src/api/restaurant/controllers/restaurant.js" linenums="1" hl_lines="33"
 
@@ -69,7 +69,9 @@ A new controller can be implemented:
 
 === "TypeScript"
 
-    ```js title="./src/api/restaurant/controllers/restaurant.ts" linenums="1"
+    <div class="annotate">
+
+    ``` js title="./src/api/restaurant/controllers/restaurant.ts" linenums="1"
 
     import { factories } from '@strapi/strapi'; 
 
@@ -103,12 +105,15 @@ A new controller can be implemented:
         const { query } = ctx;
 
         const entity = await strapi.service('api::restaurant.restaurant').findOne(id, query);
-        const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
+        const sanitizedEntity = await this.sanitizeOutput(entity, ctx); // (1)!
 
         return this.transformResponse(sanitizedEntity);
       }
     }));
     ```
+    </div>
+
+    1.  :octicons-rocket-24: `sanitizeOutput` and `sanitizeInput` in Strapi v4 replace the `sanitizeEntity` utility function found in Strapi v3 (see [migration documentation](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides/v4/code/backend/controllers.html)).
 
 Each controller action can be an `async` or `sync` function.
 Every action receives a context object (`ctx`) as a parameter. `ctx` contains the [request context](#) and the [response context](#).

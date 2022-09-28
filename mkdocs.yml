@@ -15,6 +15,7 @@ theme:
     - header.autohide
     - toc.follow
     - content.tabs.link # link all tabs with the same label throughout whole docs (test it with JS/TS tabs)
+    - content.code.annotate
   palette:
    # Palette toggle for light mode
     - scheme: default
@@ -48,16 +49,17 @@ plugins:
       draggable: true
 markdown_extensions:
   - admonition
+  - attr_list # used for annotations and images — see https://squidfunk.github.io/mkdocs-material/reference/annotations/#annotations
+  - md_in_html # same, required for annotations and images
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.snippets
   - pymdownx.tabbed:
       alternate_style: true # mandatory for tabs to work — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed
   - pymdownx.highlight:
       anchor_linenums: true # make it possible to link to a specific line of code
       use_pygments: true # renders colors on server side, not on client side
   - pymdownx.inlinehilite
-  - attr_list # used for annotations and images — see https://squidfunk.github.io/mkdocs-material/reference/annotations/#annotations
-  - md_in_html # same, required for annotations and images
   - toc:
       permalink: true
       # toc_depth: 4 # uncomment and define a number from 1 to 6 — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth
