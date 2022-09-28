@@ -61,6 +61,9 @@ markdown_extensions:
       anchor_linenums: true # make it possible to link to a specific line of code
       use_pygments: true # renders colors on server side, not on client side
   - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
   - toc:
       permalink: true
       # toc_depth: 4 # uncomment and define a number from 1 to 6 — see https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth

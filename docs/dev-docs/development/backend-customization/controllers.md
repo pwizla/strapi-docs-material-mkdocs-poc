@@ -175,6 +175,9 @@ Every action receives a context object (`ctx`) as a parameter. `ctx` contains th
 
 ### Extending core controllers
 
+:octicons-tag-16: Strapi v4.x.x&nbsp;&nbsp;·
+[:material-gold: Gold plan](https://strapi.io/pricing)
+
 Default controllers and actions are created for each content-type. These default controllers are used to return responses to API requests (e.g. when `GET /api/articles/3` is accessed, the `findOne` action of the default controller for the "Article" content-type is called). Default controllers can be customized to implement your own logic. The following code examples should help you get started.
 
 !!! tip
