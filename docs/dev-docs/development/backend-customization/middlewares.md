@@ -24,7 +24,7 @@ A new application-level or API-level middleware can be implemented:
 
 Middlewares working with the REST API are functions like the following:
 
-=== "JavaScript"
+=== ":simple-javascript: JavaScript"
 
     ```js title="./src/middlewares/my-middleware.js or ./src/api/[api-name]/middlewares/my-middleware.js"
 
@@ -33,7 +33,7 @@ Middlewares working with the REST API are functions like the following:
     };
     ```
 
-=== "TypeScript"
+=== ":simple-typescript: TypeScript"
 
     ```js title="./src/middlewares/my-middleware.js or ./src/api/[api-name]/middlewares/my-middleware.ts"
 
@@ -46,7 +46,7 @@ Once created, custom middlewares should be added to the [middlewares configurati
 
 ??? example "Example of a custom timer middleware"
 
-    === "JavaScript"
+    === ":simple-javascript: JavaScript"
 
         ```js title="./config/middlewares.js"
         module.exports = () => {
@@ -61,7 +61,7 @@ Once created, custom middlewares should be added to the [middlewares configurati
         };
         ```
 
-    === "TypeScript"
+    === ":simple-typescript: TypeScript"
 
         ```js title="./config/middlewares.ts"
 

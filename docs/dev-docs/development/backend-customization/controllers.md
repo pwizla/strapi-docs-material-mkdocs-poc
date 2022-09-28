@@ -18,7 +18,7 @@ A new controller can be implemented:
   - in `./src/api/[api-name]/controllers/` for API controllers (this location matters as controllers are auto-loaded by Strapi from there)
   - or in a folder like `./src/plugins/[plugin-name]/server/controllers/` for plugin controllers, though they can be created elsewhere as long as the plugin interface is properly exported in the `strapi-server.js` file (see [Server API for Plugins documentation](#))
 
-=== "JavaScript"
+=== ":simple-javascript: JavaScript"
 
     ???+ abstract "A nice Material for MkDocs feature is hidden in this block 🤫"
         This tabs showcases the annotation feature of Material for MkDocs. Click on the following little icon (1) to test it.
@@ -67,7 +67,7 @@ A new controller can be implemented:
     }));
     ```
 
-=== "TypeScript"
+=== ":simple-typescript: TypeScript"
 
     <div class="annotate">
 
@@ -122,7 +122,7 @@ Every action receives a context object (`ctx`) as a parameter. `ctx` contains th
 
     A specific `GET /hello` [route](#) is defined, the name of the router file (i.e. `index`) is used to call the controller handler (i.e. `index`). Every time a `GET /hello` request is sent to the server, Strapi calls the `index` action in the `hello.js` controller, which returns `Hello World!`:
 
-    === "JavaScript"
+    === ":simple-javascript: JavaScript"
 
         ```js title="./src/api/hello/routes/hello.js" linenums="1"
 
@@ -146,7 +146,7 @@ Every action receives a context object (`ctx`) as a parameter. `ctx` contains th
         };
         ```
 
-    === "TypeScript"
+    === ":simple-typescript: TypeScript"
 
         ```js title="./src/api/hello/routes/hello.ts" linenums="1"
 
