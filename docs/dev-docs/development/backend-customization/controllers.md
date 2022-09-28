@@ -290,6 +290,7 @@ Controllers are declared and attached to a route. Controllers are automatically 
 ```js
     // access an API controller
     strapi.controller('api::api-name.controller-name');
+
     // access a plugin controller
     strapi.controller('plugin::plugin-name.controller-name');
 ```
