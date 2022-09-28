@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # Creating content-types
 
 !!! info "Development-only"
