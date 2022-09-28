@@ -29,7 +29,7 @@ Middlewares working with the REST API are functions like the following:
     ```js title="./src/middlewares/my-middleware.js or ./src/api/[api-name]/middlewares/my-middleware.js"
 
     module.exports = (config, { strapi })=> {
-    return (context, next) => {};
+        return (context, next) => {};
     };
     ```
 
