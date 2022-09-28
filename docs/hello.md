@@ -45,4 +45,4 @@ For enterprise support, please see our [Enterprise Support platform](https://sup
 <!-- Notice how we have a caution block without any title by simply using empty double quotes as a title. -->
 !!! caution ""
     Material for MkDocs does not support interactive code blocks.
-    [This plugin]() can add the feature but it's for a Jekyll-based theme, so we would lose all our Material for MkDocs Insiders extra features.
+    [This plugin](https://vsoch.github.io/mkdocs-jekyll/docs/extras/interactive) can add the feature but it's for a Jekyll-based theme, so we would lose all our Material for MkDocs Insiders extra features.
