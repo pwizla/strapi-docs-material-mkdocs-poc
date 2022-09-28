@@ -9,7 +9,7 @@ theme:
   features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
+    # - navigation.tabs
     - navigation.prune
     - navigation.top
     - header.autohide
