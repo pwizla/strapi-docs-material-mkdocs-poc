@@ -1,0 +1,1453 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3+insiders-4.23.5" name="generator"/>
+<title>Admin Panel API for plugins - Strapi Documentation</title>
+<link href="../../../assets/stylesheets/main.fb3608a7.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="deep-purple" data-md-color-primary="deep-purple" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#admin-panel-api-for-plugins">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Strapi Documentation" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Strapi Documentation">
+<img alt="logo" src="../../../assets/logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Strapi Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Admin Panel API for plugins
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="deep-purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="deep-purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-2.69L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/pwizla/strapi-docs-material-mkdocs-poc" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Strapi Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Strapi Documentation">
+<img alt="logo" src="../../../assets/logo.png"/>
+</a>
+    Strapi Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/pwizla/strapi-docs-material-mkdocs-poc" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Welcome to Strapi Documentation
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-ellipsis">
+    Dev docs
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Dev docs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Dev docs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hello/">
+<span class="md-ellipsis">
+    Welcome to the Strapi Developer Docs!
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-ellipsis">
+    Api
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Api" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Api
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Admin Panel API for plugins
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Admin Panel API for plugins
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entry-file">
+<span class="md-ellipsis">
+      Entry file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lifecycle-functions">
+<span class="md-ellipsis">
+      Lifecycle functions
+    </span>
+</a>
+<nav aria-label="Lifecycle functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register">
+<span class="md-ellipsis">
+      register()
+    </span>
+</a>
+<nav aria-label="register()" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registerplugin">
+<span class="md-ellipsis">
+      registerPlugin()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bootstrap">
+<span class="md-ellipsis">
+      bootstrap()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#async-function">
+<span class="md-ellipsis">
+      Async function
+    </span>
+</a>
+<nav aria-label="Async function" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registertrads">
+<span class="md-ellipsis">
+      registerTrads()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#available-actions">
+<span class="md-ellipsis">
+      Available actions
+    </span>
+</a>
+<nav aria-label="Available actions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#menu-api">
+<span class="md-ellipsis">
+      Menu API
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settings-api">
+<span class="md-ellipsis">
+      Settings API
+    </span>
+</a>
+<nav aria-label="Settings API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#createsettingsection">
+<span class="md-ellipsis">
+      createSettingSection()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#addsettingslink">
+<span class="md-ellipsis">
+      addSettingsLink()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#addsettingslinks">
+<span class="md-ellipsis">
+      addSettingsLinks()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#injection-zones-api">
+<span class="md-ellipsis">
+      Injection Zones API
+    </span>
+</a>
+<nav aria-label="Injection Zones API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-predefined-injection-zones">
+<span class="md-ellipsis">
+      Using predefined injection zones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-custom-injection-zone">
+<span class="md-ellipsis">
+      Creating a custom injection zone
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#injecting-components">
+<span class="md-ellipsis">
+      Injecting components
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accessing-data-with-the-usecmeditviewdatamanager-react-hook">
+<span class="md-ellipsis">
+      Accessing data with the useCMEditViewDataManager React hook
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reducers-api">
+<span class="md-ellipsis">
+      Reducers API
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hooks-api">
+<span class="md-ellipsis">
+      Hooks API
+    </span>
+</a>
+<nav aria-label="Hooks API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#predefined-hook">
+<span class="md-ellipsis">
+      Predefined hook
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rest-api/">
+<span class="md-ellipsis">
+    REST API
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../development/backend-customization/controllers/">
+<span class="md-ellipsis">
+    Development
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../user-docs/intro/">
+<span class="md-ellipsis">
+    User docs
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entry-file">
+<span class="md-ellipsis">
+      Entry file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lifecycle-functions">
+<span class="md-ellipsis">
+      Lifecycle functions
+    </span>
+</a>
+<nav aria-label="Lifecycle functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register">
+<span class="md-ellipsis">
+      register()
+    </span>
+</a>
+<nav aria-label="register()" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registerplugin">
+<span class="md-ellipsis">
+      registerPlugin()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bootstrap">
+<span class="md-ellipsis">
+      bootstrap()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#async-function">
+<span class="md-ellipsis">
+      Async function
+    </span>
+</a>
+<nav aria-label="Async function" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registertrads">
+<span class="md-ellipsis">
+      registerTrads()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#available-actions">
+<span class="md-ellipsis">
+      Available actions
+    </span>
+</a>
+<nav aria-label="Available actions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#menu-api">
+<span class="md-ellipsis">
+      Menu API
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settings-api">
+<span class="md-ellipsis">
+      Settings API
+    </span>
+</a>
+<nav aria-label="Settings API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#createsettingsection">
+<span class="md-ellipsis">
+      createSettingSection()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#addsettingslink">
+<span class="md-ellipsis">
+      addSettingsLink()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#addsettingslinks">
+<span class="md-ellipsis">
+      addSettingsLinks()
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#injection-zones-api">
+<span class="md-ellipsis">
+      Injection Zones API
+    </span>
+</a>
+<nav aria-label="Injection Zones API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-predefined-injection-zones">
+<span class="md-ellipsis">
+      Using predefined injection zones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-custom-injection-zone">
+<span class="md-ellipsis">
+      Creating a custom injection zone
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#injecting-components">
+<span class="md-ellipsis">
+      Injecting components
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accessing-data-with-the-usecmeditviewdatamanager-react-hook">
+<span class="md-ellipsis">
+      Accessing data with the useCMEditViewDataManager React hook
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reducers-api">
+<span class="md-ellipsis">
+      Reducers API
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hooks-api">
+<span class="md-ellipsis">
+      Hooks API
+    </span>
+</a>
+<nav aria-label="Hooks API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#predefined-hook">
+<span class="md-ellipsis">
+      Predefined hook
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/pwizla/strapi-docs-material-mkdocs-poc/edit/main/docs/dev-docs/api/admin-panel-api.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
+</a>
+<h1 id="admin-panel-api-for-plugins">Admin Panel API for plugins<a class="headerlink" href="#admin-panel-api-for-plugins" title="Permanent link">¶</a></h1>
+<p>A Strapi <a href="#">plugin</a> can interact with both the <a href="#">back end</a> or the front end of the Strapi app. The Admin Panel API is about the front end part, i.e. it allows a plugin to customize Strapi's <a href="/docs/user-docs/intro">admin panel</a>.</p>
+<p>The admin panel is a <a href="https://reactjs.org/">React</a> application that can embed other React applications. These other React applications are the admin parts of each Strapi plugin.</p>
+<p>To create a plugin that interacts with the Admin Panel API:</p>
+<ol>
+<li>Create an <a href="#entry-file">entry file</a>.</li>
+<li>Within this file, declare and export a plugin interface that uses the <a href="#available-actions">available actions</a>.</li>
+<li>
+<p>Require this plugin interface in a <code>strapi-admin.js</code> file at the root of the plugin package folder:</p>
+<div class="highlight"><span class="filename">[plugin-name]/strapi-admin.js</span><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="s1">'use strict'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./admin/src'</span><span class="p">).</span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="entry-file">Entry file<a class="headerlink" href="#entry-file" title="Permanent link">¶</a></h2>
+<p>The entry file for the Admin Panel API is <code>[plugin-name]/admin/src/index.js</code>. This file exports the required interface, with the following functions available:</p>
+<table>
+<thead>
+<tr>
+<th>Function type</th>
+<th>Available functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lifecycle functions</td>
+<td><a href="#register"><code>register</code></a><br/><a href="#bootstrap"><code>bootstrap</code></a></td>
+</tr>
+<tr>
+<td>Async function</td>
+<td><a href="#registertrads"><code>registerTrads</code></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lifecycle-functions">Lifecycle functions<a class="headerlink" href="#lifecycle-functions" title="Permanent link">¶</a></h2>
+<h3 id="register"><code>register()</code><a class="headerlink" href="#register" title="Permanent link">¶</a></h3>
+<p><strong>Type:</strong> <code>Function</code></p>
+<p>This function is called to load the plugin, even before the app is actually <a href="#bootstrap">bootstrapped</a>. It takes the running Strapi application as an argument (<code>app</code>).</p>
+<p>Within the register function, a plugin can:</p>
+<ul>
+<li><a href="#registerplugin">register itself</a> so it's available to the admin panel</li>
+<li>add a new link to the main navigation (see <a href="#menu-api">Menu API</a>)</li>
+<li><a href="#createsettingsection">create a new settings section</a></li>
+<li>define <a href="#injection-zones-api">injection zones</a></li>
+<li><a href="#reducers-api">add reducers</a></li>
+</ul>
+<h4 id="registerplugin"><code>registerPlugin()</code><a class="headerlink" href="#registerplugin" title="Permanent link">¶</a></h4>
+<p><strong>Type:</strong> <code>Function</code></p>
+<p>Registers the plugin to make it available in the admin panel.</p>
+<p>This function returns an object with the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Plugin id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Plugin name</td>
+</tr>
+<tr>
+<td><code>injectionZones</code></td>
+<td>Object</td>
+<td>Declaration of available <a href="#injection-zones-api">injection zones</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some parameters can be imported from the <code>package.json</code> file.</p>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// Auto-generated component</span><span class="w"></span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">PluginIcon</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./components/PluginIcon'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">pluginId</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./pluginId'</span><span class="w"></span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">addMenuLink</span><span class="p">({</span><span class="w"></span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">      </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="sb">`/plugins/</span><span class="si">${</span><span class="nx">pluginId</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="nx">PluginIcon</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">      </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">pluginId</span><span class="si">}</span><span class="sb">.plugin.name`</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="s1">'My plugin'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">      </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="cm">/* webpackChunkName: "my-plugin" */</span><span class="w"> </span><span class="s1">'./pages/App'</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">component</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">      </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// array of permissions (object), allow a user to access a plugin depending on its permissions</span><span class="w"></span>
+<a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerPlugin</span><span class="p">({</span><span class="w"></span>
+<a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">pluginId</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">      </span><span class="nx">name</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="bootstrap"><code>bootstrap()</code><a class="headerlink" href="#bootstrap" title="Permanent link">¶</a></h3>
+<p><strong>Type</strong>: <code>Function</code></p>
+<p>Exposes the bootstrap function, executed after all the plugins are <a href="#register">registered</a>.</p>
+<p>Within the bootstrap function, a plugin can:</p>
+<ul>
+<li>extend another plugin, using <code>getPlugin('plugin-name')</code>,</li>
+<li>register hooks (see <a href="#hooks-api">Hooks API</a>)</li>
+<li><a href="#settings-api">add links to a settings section</a></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">      </span><span class="c1">// execute some bootstrap code</span><span class="w"></span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">injectContentManagerComponent</span><span class="p">(</span><span class="s1">'editView'</span><span class="p">,</span><span class="w"> </span><span class="s1">'right-links'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'my-compo'</span><span class="p">,</span><span class="w"> </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'my-compo'</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="async-function">Async function<a class="headerlink" href="#async-function" title="Permanent link">¶</a></h2>
+<p>While <a href="#register"><code>register()</code></a> and <a href="#bootstrap"><code>bootstrap()</code></a> are lifecycle functions, <code>registerTrads()</code> is an async function.</p>
+<h3 id="registertrads"><code>registerTrads()</code><a class="headerlink" href="#registertrads" title="Permanent link">¶</a></h3>
+<p><strong>Type</strong>: <code>Function</code></p>
+<p>To reduce the build size, the admin panel is only shipped with 2 locales by default (<code>en</code> and <code>fr</code>). The <code>registerTrads()</code> function is used to register a plugin's translations files and to create separate chunks for the application translations. It does not need to be modified.</p>
+<details class="example">
+<summary>Example: Register a plugin's translation files</summary>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">registerTrads</span><span class="p">({</span><span class="w"> </span><span class="nx">locales</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">importedTrads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="nx">locales</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">locale</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">            </span><span class="cm">/* webpackChunkName: "[pluginId]-[request]" */</span><span class="w"> </span><span class="sb">`./translations/</span><span class="si">${</span><span class="nx">locale</span><span class="si">}</span><span class="sb">.json`</span><span class="w"></span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">          </span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">            </span><span class="p">.</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">                </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">prefixPluginTranslations</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">pluginId</span><span class="p">),</span><span class="w"></span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">                </span><span class="nx">locale</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">              </span><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">            </span><span class="p">})</span><span class="w"></span>
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">            </span><span class="p">.</span><span class="k">catch</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">                </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">                </span><span class="nx">locale</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">              </span><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">            </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">        </span><span class="p">})</span><span class="w"></span>
+<a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">      </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a>
+<a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">importedTrads</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">  </span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h2 id="available-actions">Available actions<a class="headerlink" href="#available-actions" title="Permanent link">¶</a></h2>
+<p>The Admin Panel API allows a plugin to take advantage of several small APIs to perform actions. Use this table as a reference:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>API to use</th>
+<th>Function to use</th>
+<th>Related lifecycle function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add a new link to the main navigation</td>
+<td><a href="#menu-api">Menu API</a></td>
+<td><a href="#menu-api"><code>addMenuLink()</code></a></td>
+<td><a href="#register"><code>register()</code></a></td>
+</tr>
+<tr>
+<td>Create a new settings section</td>
+<td><a href="#settings-api">Settings API</a></td>
+<td><a href="#createsettingsection"><code>createSettingSection()</code></a></td>
+<td><a href="#register"><code>register()</code></a></td>
+</tr>
+<tr>
+<td>Declare an injection zone</td>
+<td><a href="#injection-zones-api">Injection Zones API</a></td>
+<td><a href="#registerplugin"><code>registerPlugin()</code></a></td>
+<td><a href="#register"><code>register()</code></a></td>
+</tr>
+<tr>
+<td>Add a reducer</td>
+<td><a href="#reducers-api">Reducers API</a></td>
+<td><a href="#reducers-api"><code>addReducers()</code></a></td>
+<td><a href="#register"><code>register()</code></a></td>
+</tr>
+<tr>
+<td>Create a hook</td>
+<td><a href="#hooks-api">Hooks API</a></td>
+<td><a href="#hooks-api"><code>createHook()</code></a></td>
+<td><a href="#register"><code>register()</code></a></td>
+</tr>
+<tr>
+<td>Add a single link to a settings section</td>
+<td><a href="#settings-api">Settings API</a></td>
+<td><a href="#addsettingslink"><code>addSettingsLink()</code></a></td>
+<td><a href="#bootstrap"><code>bootstrap()</code></a></td>
+</tr>
+<tr>
+<td>Add multiple links to a settings section</td>
+<td><a href="#settings-api">Settings API</a></td>
+<td><a href="#addsettingslinks"><code>addSettingsLinks()</code></a></td>
+<td><a href="#bootstrap"><code>bootstrap()</code></a></td>
+</tr>
+<tr>
+<td>Inject a Component in an injection zone</td>
+<td><a href="#injection-zones-api">Injection Zones API</a></td>
+<td><a href="#injection-zones-api"><code>injectComponent()</code></a></td>
+<td><a href="#register"><code>bootstrap()</code></a></td>
+</tr>
+<tr>
+<td>Register a hook</td>
+<td><a href="#hooks-api">Hooks API</a></td>
+<td><a href="#hooks-api"><code>registerHook()</code></a></td>
+<td><a href="#bootstrap"><code>bootstrap()</code></a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Replacing the WYSIWYG</p>
+<p>The WYSIWYG editor can be replaced by taking advantage of the <a href="#register">register lifecycle</a> (see <a href="#">new WYSIWYG field in the admin panel</a> guide).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The admin panel supports dotenv variables.</p>
+<p>All variables defined in a <code>.env</code> file and prefixed by <code>STRAPI_ADMIN_</code> are available while customizing the admin panel through <code>process.env</code>.</p>
+</div>
+<h3 id="menu-api">Menu API<a class="headerlink" href="#menu-api" title="Permanent link">¶</a></h3>
+<p>The Menu API allows a plugin to add a new link to the main navigation through the <code>addMenuLink()</code> function with the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to</code></td>
+<td>String</td>
+<td>Path the link should point to</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>React Component</td>
+<td>Icon to display in the main navigation</td>
+</tr>
+<tr>
+<td><code>intlLabel</code></td>
+<td>Object</td>
+<td>Label for the link, following the <a href="https://formatjs.io/docs/react-intl">React Int'l</a> convention, with:<ul><li><code>id</code>: id used to insert the localized label</li><li><code>defaultMessage</code>: default label for the link</li></ul></td>
+</tr>
+<tr>
+<td><code>Component</code></td>
+<td>Async function</td>
+<td>Returns a dynamic import of the plugin entry point</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>Array of Objects</td>
+<td>Permissions declared in the <code>permissions.js</code> file of the plugin</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>intlLabel.id</code> are ids used in translation files (<code>[plugin-name]/admin/src/translations/[language].json</code>).</p>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">PluginIcon</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./components/PluginIcon'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">addMenuLink</span><span class="p">({</span><span class="w"></span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">      </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="s1">'/plugins/my-plugin'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="nx">PluginIcon</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">      </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'my-plugin.plugin.name'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">        </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="s1">'My plugin'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">      </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'My plugin'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">      </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// permissions to apply to the link</span><span class="w"></span>
+<a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerPlugin</span><span class="p">({</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">  </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="settings-api">Settings API<a class="headerlink" href="#settings-api" title="Permanent link">¶</a></h3>
+<p>The Settings API offers 3 different methods:</p>
+<div class="grid cards">
+<ul>
+<li><a href="#createsettingsection"><strong><code>createSettingSection()</code></strong></a><br/>to create a new section</li>
+<li><a href="#addsettingslink"><strong><code>addSettingsLink()</code></strong></a><br/>to add a <strong>single</strong> link to an existing section</li>
+<li><a href="#addsettingslink"><strong><code>addSettingsLinks()</code></strong></a><br/>to add <strong>multiple</strong> links to an existing section</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adding a new section happens in the <a href="#register">register</a> lifecycle while adding links happens during the <a href="#bootstrap">bootstrap</a> lifecycle.</p>
+</div>
+<p>All functions accept links as objects with the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>React id</td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td>String</td>
+<td>Path the link should point to</td>
+</tr>
+<tr>
+<td><code>intlLabel</code></td>
+<td>Object</td>
+<td>Label for the link, following the <a href="https://formatjs.io/docs/react-intl">React Int'l</a> convention, with:<ul><li><code>id</code>: id used to insert the localized label</li><li><code>defaultMessage</code>: default label for the link</li></ul></td>
+</tr>
+<tr>
+<td><code>Component</code></td>
+<td>Async function</td>
+<td>Returns a dynamic import of the plugin entry point</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>Array of Objects</td>
+<td>Permissions declared in the <code>permissions.js</code> file of the plugin</td>
+</tr>
+</tbody>
+</table>
+<h4 id="createsettingsection"><code>createSettingSection()</code><a class="headerlink" href="#createsettingsection" title="Permanent link">¶</a></h4>
+<p><strong>Type</strong>: <code>Function</code></p>
+<p>Create a new settings section.</p>
+<p>The function takes 2 arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first argument</td>
+<td>Object</td>
+<td>Section label:<ul><li><code>id</code> (String): section id</li><li><code>intlLabel</code> (Object): localized label for the section, following the <a href="https://formatjs.io/docs/react-intl">React Int'l</a> convention, with:<ul><li><code>id</code>: id used to insert the localized label</li><li><code>defaultMessage</code>: default label for the section</li></ul></li></ul></td>
+</tr>
+<tr>
+<td>second argument</td>
+<td>Array of Objects</td>
+<td>Links included in the section</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>intlLabel.id</code> are ids used in translation files (<code>[plugin-name]/admin/src/translations/[language].json</code>).</p>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">myComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="cm">/* webpackChunkName: "users-providers-settings-page" */</span><span class="w"> </span><span class="s1">'./pages/Providers'</span><span class="w"></span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">component</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">createSettingSection</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// Section to create</span><span class="w"></span>
+<a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">      </span><span class="p">[</span><span class="w"></span>
+<a href="#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">        </span><span class="c1">// links</span><span class="w"></span>
+<a href="#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">          </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">          </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">          </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-5-19" id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">          </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="nx">myComponent</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">          </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">[],</span><span class="w"></span>
+<a href="#__codelineno-5-21" id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="w">        </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-5-22" id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="w">      </span><span class="p">]</span><span class="w"></span>
+<a href="#__codelineno-5-23" id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-5-24" id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-5-25" id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h4 id="addsettingslink"><code>addSettingsLink()</code><a class="headerlink" href="#addsettingslink" title="Permanent link">¶</a></h4>
+<p><strong>Type</strong>: <code>Function</code></p>
+<p>Add a unique link to an existing settings section.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">myComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="cm">/* webpackChunkName: "users-providers-settings-page" */</span><span class="w"> </span><span class="s1">'./pages/Providers'</span><span class="w"></span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">component</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">        </span><span class="c1">// Adding a single link</span><span class="w"></span>
+<a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">        </span><span class="nx">app</span><span class="p">.</span><span class="nx">addSettingsLink</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">         </span><span class="s1">'global'</span><span class="p">,</span><span class="w"> </span><span class="c1">// id of the section to add the link to</span><span class="w"></span>
+<a href="#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">            </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">                </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">                </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="nx">myComponent</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-6-19" id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">                </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">[]</span><span class="w"></span>
+<a href="#__codelineno-6-20" id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-6-21" id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-6-22" id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-6-23" id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="addsettingslinks"><code>addSettingsLinks()</code><a class="headerlink" href="#addsettingslinks" title="Permanent link">¶</a></h4>
+<p><strong>Type</strong>: <code>Function</code></p>
+<p>Add multiple links to an existing settings section.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">myComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="cm">/* webpackChunkName: "users-providers-settings-page" */</span><span class="w"> </span><span class="s1">'./pages/Providers'</span><span class="w"></span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">component</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">  </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="c1">// Adding several links at once</span><span class="w"></span>
+<a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">addSettingsLinks</span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">      </span><span class="s1">'global'</span><span class="p">,</span><span class="w"> </span><span class="c1">// id of the section to add the link in</span><span class="w"></span>
+<a href="#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">        </span><span class="p">[{</span><span class="w"></span>
+<a href="#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">          </span><span class="nx">intlLabel</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultMessage</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">          </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">          </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">          </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="nx">myComponent</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">          </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">[]</span><span class="w"></span>
+<a href="#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">        </span><span class="p">}]</span><span class="w"></span>
+<a href="#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">    </span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="injection-zones-api">Injection Zones API<a class="headerlink" href="#injection-zones-api" title="Permanent link">¶</a></h3>
+<p>Injection zones refer to areas of a view's layout where a plugin allows another to inject a custom React component (e.g. a UI element like a button).</p>
+<p>Plugins can use:</p>
+<ul>
+<li>Strapi's <a href="#using-predefined-injection-zones">predefined injection zones</a> for the Content Manager,</li>
+<li>or custom injection zones, created by a plugin</li>
+</ul>
+<div class="admonition abstract">
+<p class="admonition-title"><code>register()</code> vs. <code>bootstrap()</code></p>
+<p>Injection zones are defined in the <a href="#register">register()</a> lifecycle but components are injected in the <a href="#bootstrap">bootstrap()</a> lifecycle.</p>
+</div>
+<h4 id="using-predefined-injection-zones">Using predefined injection zones<a class="headerlink" href="#using-predefined-injection-zones" title="Permanent link">¶</a></h4>
+<p>Strapi admin panel comes with predefined injection zones so components can be added to the UI of the <a href="/docs/user-docs/intro#">Content Manager</a>:</p>
+<!-- TODO: maybe add screenshots once the design system is ready? -->
+<table>
+<thead>
+<tr>
+<th>View</th>
+<th>Injection zone name &amp; Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List view</td>
+<td><ul><li><code>actions</code>: sits between Filters and the cogs icon</li><li><code>deleteModalAdditionalInfos()</code>: sits at the bottom of the modal displayed when deleting items</li></ul></td>
+</tr>
+<tr>
+<td>Edit view</td>
+<td><ul><li><code>informations</code>: sits at the top right of the edit view</li><li><code>right-links</code>: sits between "Configure the view" and "Edit" buttons</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="creating-a-custom-injection-zone">Creating a custom injection zone<a class="headerlink" href="#creating-a-custom-injection-zone" title="Permanent link">¶</a></h4>
+<p>To create a custom injection zone, declare it as a <code>&lt;InjectionZone /&gt;</code> React component with an <code>area</code> prop that takes a string with the following naming convention: <code>plugin-name.viewName.injectionZoneName</code>.</p>
+<h4 id="injecting-components">Injecting components<a class="headerlink" href="#injecting-components" title="Permanent link">¶</a></h4>
+<p>A plugin has 2 different ways of injecting a component:</p>
+<ul>
+<li>to inject a component from a plugin into another plugin's injection zones, use the <code>injectComponent()</code> function</li>
+<li>to specifically inject a component into one of the Content Manager's <a href="#using-predefined-injection-zones">predefined injection zones</a>, use the <code>injectContentManagerComponent()</code> function instead</li>
+</ul>
+<p>Both the <code>injectComponent()</code> and <code>injectContentManagerComponent()</code> methods accept the following arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first argument</td>
+<td>String</td>
+<td>The view where the component is injected</td>
+</tr>
+<tr>
+<td>second argument</td>
+<td>String</td>
+<td>The zone where the component is injected</td>
+</tr>
+<tr>
+<td>third argument</td>
+<td>Object</td>
+<td>An object with the following keys:<ul><li><code>name</code> (string): the name of the component</li><li><code>Component</code> (function or class): the React component to be injected</li></ul></td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>Example: Inject a component in the informations box of the Edit View of the Content Manager</summary>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">injectContentManagerComponent</span><span class="p">(</span><span class="s1">'editView'</span><span class="p">,</span><span class="w"> </span><span class="s1">'informations'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'my-plugin-my-compo'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">        </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'my-compo'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Example: Creating a new injection zone and injecting it from a plugin to another one:</summary>
+<div class="annotate">
+<div class="highlight"><span class="filename">my-plugin/admin/src/injectionZones.js (1)</span><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">InjectionZone</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@strapi/helper-plugin'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">HomePage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span><span class="w"></span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">This</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">homepage</span><span class="o">&lt;</span><span class="err">/h1&gt;</span><span class="w"></span>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">InjectionZone</span><span class="w"> </span><span class="nx">area</span><span class="o">=</span><span class="s2">"my-plugin.homePage.right"</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"></span>
+<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">        </span><span class="o">&lt;</span><span class="err">/main&gt;</span><span class="w"></span>
+<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">      </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js (2)</span><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">      </span><span class="nx">register</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">        </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerPlugin</span><span class="p">({</span><span class="w"></span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">          </span><span class="c1">// ...</span><span class="w"></span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">          </span><span class="nx">injectionZones</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">            </span><span class="nx">homePage</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">              </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">          </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">        </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><div class="highlight"><span class="filename">my-other-plugin/admin/src/index.js (3)</span><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">      </span><span class="nx">register</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">        </span><span class="c1">// ...</span><span class="w"></span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">      </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="nx">app</span><span class="p">.</span><span class="nx">getPlugin</span><span class="p">(</span><span class="s1">'my-plugin'</span><span class="p">).</span><span class="nx">injectComponent</span><span class="p">(</span><span class="s1">'homePage'</span><span class="p">,</span><span class="w"> </span><span class="s1">'right'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">          </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'my-other-plugin-component'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">          </span><span class="nx">Component</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'This component is injected'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+</p></div>
+<ol>
+<li>We'll use the injection zone in a view.</li>
+<li>The injection zone is declared in the <code>register()</code> lifecycle of the plugin.</li>
+<li>The component is injected from a plugin into another plugin.</li>
+</ol>
+</details>
+<h4 id="accessing-data-with-the-usecmeditviewdatamanager-react-hook">Accessing data with the <code>useCMEditViewDataManager</code> React hook<a class="headerlink" href="#accessing-data-with-the-usecmeditviewdatamanager-react-hook" title="Permanent link">¶</a></h4>
+<p>Once an injection zone is defined, the component to be injected in the Content Manager can have access to all the data of the Edit View through the <code>useCMEditViewDataManager</code> React hook.</p>
+<details class="example">
+<summary>Example of a basic component using the <code>useCMEditViewDataManager</code> hook</summary>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCMEditViewDataManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@strapi/helper-plugin'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MyCompo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="nx">createActionAllowedFields</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of fields that the user is allowed to edit</span><span class="w"></span>
+<a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="nx">formErrors</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Object errors</span><span class="w"></span>
+<a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span><span class="nx">readActionAllowedFields</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of field that the user is allowed to edit</span><span class="w"></span>
+<a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">    </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s1">'api::address.address'</span><span class="p">,</span><span class="w"> </span><span class="c1">// Slug of the content-type</span><span class="w"></span>
+<a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">    </span><span class="nx">updateActionAllowedFields</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">    </span><span class="nx">allLayoutData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">      </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// components layout</span><span class="w"></span>
+<a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="w">      </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// content-type layout</span><span class="w"></span>
+<a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">    </span><span class="nx">initialData</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="nx">isCreatingEntry</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">    </span><span class="nx">isSingleType</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">'resolved'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">    </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Current content-type layout</span><span class="w"></span>
+<a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">    </span><span class="nx">hasDraftAndPublish</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">    </span><span class="nx">modifiedData</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-21" id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">    </span><span class="nx">onPublish</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-22" id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">    </span><span class="nx">onUnpublish</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-23" id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">    </span><span class="nx">addComponentToDynamicZone</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-24" id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">    </span><span class="nx">addNonRepeatableComponentToField</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-25" id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="w">    </span><span class="nx">addRelation</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-26" id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">    </span><span class="nx">addRepeatableComponentToField</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-27" id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="w">    </span><span class="nx">moveComponentDown</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-28" id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">    </span><span class="nx">moveComponentField</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-29" id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="w">    </span><span class="nx">moveComponentUp</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-30" id="__codelineno-12-30" name="__codelineno-12-30"></a><span class="w">    </span><span class="nx">moveRelation</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-31" id="__codelineno-12-31" name="__codelineno-12-31"></a><span class="w">    </span><span class="nx">onChange</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-32" id="__codelineno-12-32" name="__codelineno-12-32"></a><span class="w">    </span><span class="nx">onRemoveRelation</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-33" id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="w">    </span><span class="nx">removeComponentFromDynamicZone</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-34" id="__codelineno-12-34" name="__codelineno-12-34"></a><span class="w">    </span><span class="nx">removeComponentFromField</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-35" id="__codelineno-12-35" name="__codelineno-12-35"></a><span class="w">    </span><span class="nx">removeRepeatableField</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-12-36" id="__codelineno-12-36" name="__codelineno-12-36"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCMEditViewDataManager</span><span class="p">()</span><span class="w"></span>
+<a href="#__codelineno-12-37" id="__codelineno-12-37" name="__codelineno-12-37"></a>
+<a href="#__codelineno-12-38" id="__codelineno-12-38" name="__codelineno-12-38"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<a href="#__codelineno-12-39" id="__codelineno-12-39" name="__codelineno-12-39"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h3 id="reducers-api">Reducers API<a class="headerlink" href="#reducers-api" title="Permanent link">¶</a></h3>
+<p>Reducers are <a href="https://redux.js.org/">Redux</a> reducers that can be used to share state between components. Reducers can be useful when:</p>
+<ul>
+<li>Large amounts of application state are needed in many places in the application.</li>
+<li>The application state is updated frequently.</li>
+<li>The logic to update that state may be complex.</li>
+</ul>
+<p>Reducers can be added to a plugin interface with the <code>addReducers()</code> function during the <a href="#register"><code>register</code></a> lifecycle.</p>
+<p>A reducer is declared as an object with this syntax:</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">exampleReducer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./reducers'</span><span class="w"></span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reducers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="c1">// Reducer Syntax</span><span class="w"></span>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="p">[</span><span class="sb">`</span><span class="si">${</span><span class="nx">pluginId</span><span class="si">}</span><span class="sb">_exampleReducer`</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">exampleReducer</span><span class="w"></span>
+<a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">    </span><span class="nx">register</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">addReducers</span><span class="p">(</span><span class="nx">reducers</span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">    </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">  </span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="hooks-api">Hooks API<a class="headerlink" href="#hooks-api" title="Permanent link">¶</a></h3>
+<p>The Hooks API allows a plugin to create and register hooks, i.e. places in the application where plugins can add personalized behavior.</p>
+<p>Hooks should be registered during the <a href="#bootstrap">bootstrap</a> lifecycle of a plugin.</p>
+<p>Hooks can then be run in series, in waterfall or in parallel:</p>
+<ul>
+<li><code>runHookSeries</code> returns an array corresponding to the result of each function executed, ordered</li>
+<li><code>runHookParallel</code> returns an array corresponding to the result of the promise resolved by the function executed, ordered</li>
+<li><code>runHookWaterfall</code> returns a single value corresponding to all the transformations applied by the different functions starting with the initial value <code>args</code>.</li>
+</ul>
+<details class="example">
+<summary>Example: Create a hook in a plugin and use it in another plugin</summary>
+<div class="highlight"><span class="filename">my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1">// Create a hook in a plugin</span><span class="w"></span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">createHook</span><span class="p">(</span><span class="s1">'My-PLUGIN/MY_HOOK'</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><span class="filename">my-other-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c1">// Use the hook in another plugin</span><span class="w"></span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">  </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerHook</span><span class="p">(</span><span class="s1">'My-PLUGIN/MY_HOOK'</span><span class="p">,</span><span class="w"> </span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>
+<a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">      </span><span class="c1">// important: return the mutated data</span><span class="w"></span>
+<a href="#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="w"></span>
+<a href="#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a>
+<a href="#__codelineno-15-11" id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerPlugin</span><span class="p">({...})</span><span class="w"></span>
+<a href="#__codelineno-15-12" id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-15-13" id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h4 id="predefined-hook">Predefined hook<a class="headerlink" href="#predefined-hook" title="Permanent link">¶</a></h4>
+<p>Strapi includes a predefined <code>Admin/CM/pages/ListView/inject-column-in-table</code> hook that can be used to add or mutate a column of the List View of the <a href="/docs/user-docs/intro">Content Manager</a>.</p>
+<details class="example">
+<summary>Example: <code>Admin/CM/pages/ListView/inject-column-in-table</code> hook, as used by the Internationalization plugin to add the 'Content available in' column</summary>
+<div class="highlight"><span class="filename">./plugins/my-plugin/admin/src/index.js</span><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'lodash/get'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">cellFormatter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./components/cellFormatter'</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">    </span><span class="nx">bootstrap</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">registerHook</span><span class="p">(</span><span class="s1">'Admin/CM/pages/ListView/inject-column-in-table'</span><span class="p">,</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">displayedHeaders</span><span class="p">,</span><span class="w"> </span><span class="nx">layout</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">isFieldLocalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">get</span><span class="p">(</span><span class="nx">layout</span><span class="p">,</span><span class="w"> </span><span class="s1">'contentType.pluginOptions.i18n.localized'</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a>
+<a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isFieldLocalized</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">displayedHeaders</span><span class="p">,</span><span class="w"> </span><span class="nx">layout</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a>
+<a href="#__codelineno-16-13" id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-14" id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">          </span><span class="nx">layout</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-16-15" id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">          </span><span class="nx">displayedHeaders</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a href="#__codelineno-16-16" id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">            </span><span class="p">...</span><span class="nx">displayedHeaders</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-16-17" id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">            </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-18" id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">              </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">'__locale_key__'</span><span class="p">,</span><span class="w"> </span><span class="c1">// Needed for the table</span><span class="w"></span>
+<a href="#__codelineno-16-19" id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">              </span><span class="nx">fieldSchema</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">'string'</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// Schema of the attribute</span><span class="w"></span>
+<a href="#__codelineno-16-20" id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">              </span><span class="nx">metadatas</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-16-21" id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">                </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">'Content available in'</span><span class="p">,</span><span class="w"> </span><span class="c1">// Label of the header,</span><span class="w"></span>
+<a href="#__codelineno-16-22" id="__codelineno-16-22" name="__codelineno-16-22"></a><span class="w">                </span><span class="nx">sortable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="w"> </span><span class="c1">// Define if the column is sortable</span><span class="w"></span>
+<a href="#__codelineno-16-23" id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="w">              </span><span class="p">},</span><span class="w"> </span><span class="c1">// Metadatas for the label</span><span class="w"></span>
+<a href="#__codelineno-16-24" id="__codelineno-16-24" name="__codelineno-16-24"></a><span class="w">              </span><span class="c1">// Name of the key in the data we will display</span><span class="w"></span>
+<a href="#__codelineno-16-25" id="__codelineno-16-25" name="__codelineno-16-25"></a><span class="w">              </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'locales'</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-16-26" id="__codelineno-16-26" name="__codelineno-16-26"></a><span class="w">              </span><span class="c1">// Custom renderer: props =&gt; Object.keys(props).map(key =&gt; &lt;p key={key}&gt;key&lt;/p&gt;)</span><span class="w"></span>
+<a href="#__codelineno-16-27" id="__codelineno-16-27" name="__codelineno-16-27"></a><span class="w">              </span><span class="nx">cellFormatter</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-16-28" id="__codelineno-16-28" name="__codelineno-16-28"></a><span class="w">            </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-16-29" id="__codelineno-16-29" name="__codelineno-16-29"></a><span class="w">          </span><span class="p">]</span><span class="w"></span>
+<a href="#__codelineno-16-30" id="__codelineno-16-30" name="__codelineno-16-30"></a><span class="w">        </span><span class="p">};</span><span class="w"></span>
+<a href="#__codelineno-16-31" id="__codelineno-16-31" name="__codelineno-16-31"></a><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<a href="#__codelineno-16-32" id="__codelineno-16-32" name="__codelineno-16-32"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a href="#__codelineno-16-33" id="__codelineno-16-33" name="__codelineno-16-33"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Date of last update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 28, 2022</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Date of creation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 28, 2022</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Contributors">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"></path></svg>
+</span>
+<span>GitHub</span>
+<nav>
+<a class="md-author" href="https://github.com/pwizla" title="@pwizla">
+<img alt="pwizla" src="https://avatars.githubusercontent.com/u/4233866?size=72"/>
+</a>
+</nav>
+</span>
+</aside>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Welcome to the Strapi Developer Docs!" class="md-footer__link md-footer__link--prev" href="../../hello/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Welcome to the Strapi Developer Docs!
+            </div>
+</div>
+</a>
+<a aria-label="Next: REST API" class="md-footer__link md-footer__link--next" href="../rest-api/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              REST API
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs Insiders
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" id="__settings" type="checkbox"/>
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox"/>
+<span class="task-list-indicator"></span>
+          GitHub
+        <label>
+</label></label></li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">Accept</button>
+<label class="md-button" for="__settings">Manage settings</label>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.prune", "navigation.top", "header.autohide", "toc.follow", "content.tabs.link", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.0d3e07ec.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+</html>
