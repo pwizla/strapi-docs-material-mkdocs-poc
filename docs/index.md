@@ -15,7 +15,7 @@ _Design APIs fast, manage content easily._
 
 <div class="grid cards" markdown>
 
--   :material-file-document-edit-outline:{ .lg .middle } [__Content Manager__](/user-docs/intro/)
+-   :material-file-document-edit-outline:{ .lg .middle } [__Content Manager__](/user-guide/intro/)
 
     ---
 
@@ -23,7 +23,7 @@ _Design APIs fast, manage content easily._
 
     Learn how to play with Strapi's Admin Panel and quickly build and add content by reading the User Guide.
 
-    [:octicons-arrow-right-24: User Guide](/user-docs/intro/)
+    [:octicons-arrow-right-24: User Guide](/user-guide/intro/)
 
 -   :octicons-file-code-16:{.lg .middle} [__Developer__](/dev-docs/hello/)
 
