@@ -3,6 +3,7 @@ repo_url: https://github.com/pwizla/strapi-docs-material-mkdocs-poc
 edit_uri: edit/main/docs
 theme:
   name: material
+  custom_dir: overrides
   logo: assets/logo.png
   icon:
     repo: fontawesome/brands/github
