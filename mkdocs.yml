@@ -75,6 +75,8 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 extra:
+  version:
+    provider: mike
   consent:
     title: Cookie consent
     description: >- 
