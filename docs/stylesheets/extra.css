@@ -16,6 +16,6 @@
           mask-image: var(--md-admonition-icon--strapi);
 }
 .persona {
-  margin: 0 80px;
-  height: 340px !important;
+  margin: 0 120px;
+  height: 200px !important;
 }

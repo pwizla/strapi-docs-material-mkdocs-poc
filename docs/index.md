@@ -9,7 +9,7 @@ next: /user-docs/hello
 
 # :material-rocket-launch: Welcome to Strapi Documentation
 
-__Design APIs fast, manage content easily.__
+_Design APIs fast, manage content easily._
 
 <br/>
 
@@ -46,3 +46,5 @@ __Design APIs fast, manage content easily.__
     [:octicons-arrow-right-24: REST API](/dev-docs/api/rest-api/)
 
 </div>
+<br/>
+<br/>
