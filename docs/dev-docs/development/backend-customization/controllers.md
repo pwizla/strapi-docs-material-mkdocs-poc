@@ -26,6 +26,8 @@ A new controller can be implemented:
 
         1.  Hello, I'm an [annotation](https://squidfunk.github.io/mkdocs-material/reference/annotations/)!<br/>I could be used to display more information 🤓<br/>Now, try to find another annotation in the TypeScript tab… 👀
 
+    <div class="annotate">
+
     ```js title="./src/api/restaurant/controllers/restaurant.js" linenums="1" hl_lines="33"
 
     const { createCoreController } = require('@strapi/strapi').factories;
@@ -59,13 +61,17 @@ A new controller can be implemented:
         const { id } = ctx.params;
         const { query } = ctx;
 
-        const entity = await strapi.service('api::restaurant.restaurant').findOne(id, query);
-        const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
+        const entity = await strapi.service('api::restaurant.restaurant').findOne(id, query); 
+        const sanitizedEntity = await this.sanitizeOutput(entity, ctx); // (1)!
 
         return this.transformResponse(sanitizedEntity);
       }
     }));
     ```
+
+    </div>
+
+    1.    This line was highlighted just to showcase how code highlighting renders with the default color scheme.
 
 === ":simple-typescript: TypeScript"
 
