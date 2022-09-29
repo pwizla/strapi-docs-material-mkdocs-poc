@@ -17,6 +17,9 @@ theme:
     - toc.follow
     - content.tabs.link # link all tabs with the same label throughout whole docs (test it with JS/TS tabs)
     - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
   palette:
    # Palette toggle for light mode
     - scheme: default
@@ -34,6 +37,7 @@ theme:
         icon: material/brightness-5
         name: Switch to light mode
 plugins:
+  - search
   - swagger-ui-tag:
   - git-revision-date-localized:
       enable_creation_date: true
