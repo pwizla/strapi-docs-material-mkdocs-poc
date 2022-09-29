@@ -4,7 +4,7 @@ hide:
   - navigation
   - footer
   - feedback
-next: /user-docs/hello
+title: Homepage
 ---
 
 # :material-rocket-launch: Welcome to Strapi Documentation
